@@ -15,6 +15,9 @@
             <a class="nav-link" href="${pageContext.request.contextPath}/Cars">Cars</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="${pageContext.request.contextPath}/WEB-INF/pages/users.jsp">Users</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link disabled">Disabled</a>
           </li>
         </ul>

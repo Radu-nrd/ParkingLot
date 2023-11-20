@@ -2,22 +2,18 @@
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<t:pageTemplate pageTitle="Cars">
-    <h1>Cars</h1>
+<t:pageTemplate pageTitle="Users">
+    <h1>Users</h1>
     <div class="container text-center">
-        <c:forEach var="car" items="${cars}">
+        <c:forEach var="user" items="${users}">
             <div class="row">
                 <div class="col">
-                        ${car.licensePlate}
+                        ${user.username}
                 </div>
                 <div class="col">
-                        ${car.parkingSpot}
-                </div>
-                <div class="col">
-                        ${car.ownerName}
+                        ${user.email}
                 </div>
             </div>
         </c:forEach>
     </div>
-    <h5>Free parking spots: ${numberOfFreeParkingSpots}</h5>
 </t:pageTemplate>
