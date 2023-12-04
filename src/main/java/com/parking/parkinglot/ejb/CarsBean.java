@@ -11,6 +11,7 @@ import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -71,6 +72,20 @@ public class CarsBean {
         User user = entityManager.find(User.class, userId);
         user.getCars().add(car);
         car.setUser(user);
+    }
+
+    public CarDto findById(Long id){
+
+        Car car = entityManager.find(Car.class, id);
+
+        return new CarDto(id, car.getLicencePlate(), car.getParkingSpot(), car.getUser().getUsername());
+    }
+
+    public void deleteCarsByIds(Collection<Long> carIds){
+        for(Long carId:carIds){
+            Car car = entityManager.find(Car.class,carId);
+            entityManager.remove(car);
+        }
     }
 
 }

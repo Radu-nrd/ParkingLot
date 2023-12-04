@@ -1,5 +1,7 @@
 package com.parking.parkinglot;
 
+import com.parking.parkinglot.common.CarDto;
+import com.parking.parkinglot.common.UserDto;
 import com.parking.parkinglot.ejb.CarsBean;
 import com.parking.parkinglot.ejb.UserBean;
 import jakarta.inject.Inject;
@@ -10,6 +12,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet(name = "EditCar", value = "/EditCar")
 public class EditCar extends HttpServlet {
@@ -20,7 +23,14 @@ public class EditCar extends HttpServlet {
     CarsBean carsBean;
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        List<UserDto> users=userBean.findAllUsers();
+        request.setAttribute("users", users);
 
+        Long carId=Long.parseLong(request.getParameter("id"));
+        CarDto car=carsBean.findById(carId);
+        request.setAttribute("car", car);
+
+        request.getRequestDispatcher("/WEB-INF/pages/editCar.jsp").forward(request,response);
     }
 
     @Override
