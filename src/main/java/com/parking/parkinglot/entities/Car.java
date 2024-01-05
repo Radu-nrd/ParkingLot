@@ -7,7 +7,7 @@ public class Car {
     private User user;
     private Long id;
 
-    String licencePlate;
+    String licensePlate;
     String parkingSpot;
     private CarPhoto photo;
 
@@ -31,12 +31,12 @@ public class Car {
         return id;
     }
 
-    public String getLicencePlate() {
-        return licencePlate;
+    public String getLicensePlate() {
+        return licensePlate;
     }
 
-    public void setLicencePlate(String licencePlate) {
-        this.licencePlate = licencePlate;
+    public void setLicensePlate(String licencePlate) {
+        this.licensePlate = licencePlate;
     }
 
     public String getParkingSpot() {

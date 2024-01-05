@@ -7,7 +7,6 @@ import com.parking.parkinglot.common.CarPhotoDto;
 import com.parking.parkinglot.entities.User;
 import jakarta.ejb.EJBException;
 import jakarta.ejb.Stateless;
-import jakarta.jws.soap.SOAPBinding;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
@@ -38,7 +37,7 @@ public class CarsBean {
     private List<CarDto> copyCarsToDto(List<Car>cars){
         List<CarDto> list = new ArrayList<>();
         for(Car car : cars){
-            CarDto temp = new CarDto(car.getId(),car.getLicencePlate(),car.getParkingSpot(),car.getUser().getUsername());
+            CarDto temp = new CarDto(car.getId(),car.getLicensePlate(),car.getParkingSpot(),car.getUser().getUsername());
             list.add(temp);
         }
         return list;
@@ -49,7 +48,7 @@ public class CarsBean {
         LOG.info("createCar");
 
         Car car = new Car();
-        car.setLicencePlate(licensePlate);
+        car.setLicensePlate(licensePlate);
         car.setParkingSpot(parkingSpot);
 
         User user = entityManager.find(User.class,userId);
@@ -63,7 +62,7 @@ public class CarsBean {
         LOG.info("updateCar");
 
         Car car = entityManager.find(Car.class, carId);
-        car.setLicencePlate(licensePlate);
+        car.setLicensePlate(licensePlate);
         car.setParkingSpot(parkingSpot);
 
         //rmeove this car from the old owner
@@ -80,7 +79,7 @@ public class CarsBean {
 
         Car car = entityManager.find(Car.class, id);
 
-        return new CarDto(id, car.getLicencePlate(), car.getParkingSpot(), car.getUser().getUsername());
+        return new CarDto(id, car.getLicensePlate(), car.getParkingSpot(), car.getUser().getUsername());
     }
 
     public void deleteCarsByIds(Collection<Long> carIds){

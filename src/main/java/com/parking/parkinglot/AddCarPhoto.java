@@ -24,7 +24,7 @@ public class AddCarPhoto extends HttpServlet {
         Long carId = Long.parseLong(request.getParameter("id"));
         CarDto car = carsBean.findById(carId);
         request.setAttribute("car",car);
-        request.getRequestDispatcher("/WEB-INF/pages/addCarPhoto.jsp");
+        request.getRequestDispatcher("/WEB-INF/pages/addCarPhoto.jsp").forward(request,response);
     }
 
     @Override
